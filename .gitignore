@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+.vercel
+# Images while testing
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg

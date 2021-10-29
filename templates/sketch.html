@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Image to Sketch</title>
+    <!-- Bootstrap 4 CDN with integrity and crossorigin-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <!-- Create a bootstrap file upload form with drag file option-->
+    <!-- Center the form -->
+    <div class="container">
+        <!-- Center the form -->
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+
+                        <h3>Convert Image to Sketch</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="/sketch" method="post" enctype="multipart/form-data" id="form">
+                            <div class="form-group">
+                                <label for="file">Upload Image</label>
+                                <!--upload only for jpg, png, jpeg-->
+                                <input type="file" class="form-control-file" id="file" name="file"
+                                    accept="image/jpeg, image/png">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Convert</button>
+                        </form>
+
+                    </div>
+                    <!--- Display the converted image -->
+                    <div id="image">
+                        <img src="" alt="" id="img" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    // Add a event listener to the form submit
+    document.getElementById('form').addEventListener('submit', function (e) {
+        // Prevent the form from submitting
+        e.preventDefault();
+        // Get the form data
+        var formData = new FormData(this);
+        // Create a new XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+        // Open the form data
+        xhr.open('POST', '/sketch');
+        // Set the request headers
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        // Set the response type
+        xhr.responseType = 'blob';
+        // Send the form data
+        xhr.send(formData);
+        // Load an image by XMLHttpRequest
+        xhr.onload = function () {
+            // Get the response
+            var response = xhr.response;
+            // Create a new image
+            var img = document.getElementById('img');
+            // Set the image src
+            var Image_URL = window.URL.createObjectURL(response);
+            img.src = Image_URL;
+
+        };
+
+
+    });
+
+
+
+
+
+</script>
+
+</html>
