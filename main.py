@@ -39,5 +39,5 @@ def upload():
         return response
     return send_file(f"./temp/{file_name}", mimetype='image/png')
 
+app.run(host="0.0.0.0")
 
-app.run(host='localhost', port=5000, debug=True)
