@@ -39,7 +39,14 @@
                     </div>
                     <!--- Display the converted image -->
                     <div id="image">
-                        <img src="" alt="" id="img" class="img-fluid">
+
+                        <!-- Center the above image by bootstrap -->
+                        <div class="text-center">
+                            <h1 id="heading"></h1>
+                            <img src="" alt="" id="img" class="img-fluid">
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -71,6 +78,7 @@
             // Create a new image
             var img = document.getElementById('img');
             // Set the image src
+            document.getElementById('heading').innerHTML = "Converted Image";
             var Image_URL = window.URL.createObjectURL(response);
             img.src = Image_URL;
 
