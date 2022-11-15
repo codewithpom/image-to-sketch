@@ -1,3 +1,4 @@
 Flask==2.0.2
 opencv-python==4.5.4.58
 gunicorn
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
